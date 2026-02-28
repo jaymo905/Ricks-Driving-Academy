@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0a0e1a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Rick's G1">
+  <link rel="manifest" href="manifest.json">
+  <title>Rick's Driving Academy</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- SCREEN: Splash -->
+  <div id="screen-splash" class="screen">
+    <div class="splash-content">
+      <div class="app-title">
+        <span class="title-rick">Rick's</span>
+        <span class="title-main">Driving Academy</span>
+      </div>
+      <div id="splash-rick" class="rick-avatar idle"></div>
+      <div class="splash-bubble">
+        <p id="splash-bubble-text">Listen up, Morty. We're doing this.</p>
+      </div>
+      <div class="name-section">
+        <label for="name-input" class="name-label">Your name, genius:</label>
+        <input type="text" id="name-input" class="name-input" placeholder="Enter your name" maxlength="20" autocomplete="off">
+      </div>
+      <button id="start-btn" class="btn btn-primary">Let's Go</button>
+    </div>
+  </div>
+
+  <!-- SCREEN: Menu -->
+  <div id="screen-menu" class="screen">
+    <div class="top-bar">
+      <div class="xp-section">
+        <div class="level-info">
+          <span id="menu-level">Lv 1</span>
+          <span id="menu-level-name">Learner</span>
+        </div>
+        <div class="xp-bar">
+          <div id="menu-xp-fill" class="xp-fill" style="width:0%"></div>
+        </div>
+      </div>
+      <button id="trophy-btn" class="trophy-btn" aria-label="View trophies">🏆</button>
+    </div>
+
+    <div class="menu-rick-section">
+      <div id="menu-rick" class="rick-avatar idle"></div>
+      <div class="speech-bubble">
+        <p id="menu-bubble">Ready to not fail your G1? Barely.</p>
+      </div>
+    </div>
+
+    <div class="mode-grid">
+      <button class="mode-card" id="mode-lecture" aria-label="Rick's Lecture — Classic Quiz">
+        <span class="mode-icon">📚</span>
+        <span class="mode-name">Rick's Lecture</span>
+        <span class="mode-desc">20 questions • Classic Quiz</span>
+      </button>
+      <button class="mode-card" id="mode-speed" aria-label="Speed Blitz — 60-second sprint">
+        <span class="mode-icon">⚡</span>
+        <span class="mode-name">Speed Blitz</span>
+        <span class="mode-desc">60 seconds • Fast answers</span>
+      </button>
+      <button class="mode-card" id="mode-signs" aria-label="Sign Recon — Road signs only">
+        <span class="mode-icon">🚧</span>
+        <span class="mode-name">Sign Recon</span>
+        <span class="mode-desc">Signs only • ID every sign</span>
+      </button>
+      <button class="mode-card daily-glow" id="mode-daily" aria-label="Daily Mission — Once per day">
+        <span class="mode-icon">📡</span>
+        <span class="mode-name">Daily Mission</span>
+        <span class="mode-desc" id="daily-desc">10 questions • Streak bonus</span>
+      </button>
+      <button class="mode-card mode-boss" id="mode-boss" aria-label="Boss Battle — Full G1 simulation">
+        <span class="mode-icon">💀</span>
+        <span class="mode-name">Boss Battle</span>
+        <span class="mode-desc">40 questions • Real G1 test</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- SCREEN: Quiz -->
+  <div id="screen-quiz" class="screen">
+    <div class="quiz-top-bar">
+      <button id="quiz-back-btn" class="back-btn" aria-label="Back to menu">←</button>
+      <span id="quiz-mode-badge" class="mode-badge">Rick's Lecture</span>
+      <span id="quiz-meta" class="quiz-meta"></span>
+    </div>
+
+    <div class="quiz-rick-section">
+      <div id="quiz-rick" class="rick-avatar idle"></div>
+      <div class="speech-bubble">
+        <p id="quiz-bubble">Let's see how much you actually know.</p>
+      </div>
+    </div>
+
+    <div class="question-section">
+      <div class="question-header">
+        <span id="q-number" class="q-number">Question 1 of 20</span>
+        <button id="hint-btn" class="hint-btn" aria-label="Get a hint from Rick">💡 Hint</button>
+        <button id="skip-btn" class="skip-btn hidden" aria-label="Skip this question">Skip →</button>
+      </div>
+      <div id="sign-display" class="sign-display hidden" aria-label="Road sign"></div>
+      <p id="q-text" class="q-text">Question text here</p>
+      <div id="options-grid" class="options-grid"></div>
+    </div>
+  </div>
+
+  <!-- SCREEN: Results -->
+  <div id="screen-results" class="screen">
+    <div class="results-content">
+      <div id="results-rick" class="rick-avatar idle"></div>
+      <div class="speech-bubble">
+        <p id="results-bubble">Not bad for a carbon-based life form.</p>
+      </div>
+      <h2 id="results-title" class="results-title">Session Complete</h2>
+      <div id="results-score" class="results-score">85%</div>
+      <p id="results-stats" class="results-stats">17 / 20 correct</p>
+      <div id="results-xp" class="results-xp">+170 XP</div>
+      <div class="results-buttons">
+        <button id="play-again-btn" class="btn btn-primary">Play Again</button>
+        <button id="results-menu-btn" class="btn btn-secondary">Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREEN: Trophies -->
+  <div id="screen-trophies" class="screen">
+    <div class="trophies-header">
+      <button id="trophies-back-btn" class="back-btn" aria-label="Back to menu">←</button>
+      <h2 class="trophies-title">Trophy Case</h2>
+    </div>
+    <div id="trophy-grid" class="trophy-grid"></div>
+  </div>
+
+  <!-- OVERLAY: Trophy unlock -->
+  <div id="overlay-trophy" class="overlay-trophy hidden" role="dialog" aria-modal="true" aria-label="Trophy unlocked">
+    <div class="trophy-card">
+      <div id="trophy-tier-badge" class="trophy-tier-badge">🥉</div>
+      <div id="trophy-name" class="trophy-name">Trophy Name</div>
+      <div id="trophy-rick-line" class="trophy-rick-line">"Nice work, I guess."</div>
+      <div id="trophy-xp" class="trophy-xp">+50 XP</div>
+      <p class="trophy-dismiss">Tap anywhere to continue</p>
+    </div>
+  </div>
+
+  <!-- Scripts — load order matters -->
+  <script src="data/rick-dialogue.js"></script>
+  <script src="data/questions.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/rick.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/trophies.js"></script>
+  <script src="js/modes/lecture.js"></script>
+  <script src="js/modes/speed-blitz.js"></script>
+  <script src="js/modes/sign-recon.js"></script>
+  <script src="js/modes/daily-mission.js"></script>
+  <script src="js/modes/boss-battle.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
